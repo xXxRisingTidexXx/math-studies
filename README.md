@@ -1,2 +1,3 @@
 # math-studies
-Source code for LaTeX and Wikipedia excercises
+
+Source code for LaTeX and Wikipedia excercises.
