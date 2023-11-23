@@ -1,0 +1,167 @@
+\documentclass[paper=a4,fontsize=11pt]{scrartcl}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[svgnames]{xcolor}
+\usepackage{geometry}
+\usepackage[
+    pdftex,
+    colorlinks,
+    linkcolor=blue,
+    citecolor=red,
+    urlcolor=blue,
+    hyperindex,
+    plainpages=false,
+    bookmarksopen,
+    bookmarksnumbered,
+    unicode
+]{hyperref}
+\usepackage{xurl}
+\usepackage{sectsty}
+
+\textheight=700px
+\frenchspacing
+\pagestyle{empty}
+\sectionfont{
+    \usefont{OT1}{phv}{b}{n}
+    \sectionrule{0pt}{0pt}{-5pt}{3pt}
+}
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}
+
+\newcommand{\sepspace}{\vspace*{1em}}
+
+\newcommand{\MyName}[1]{
+    \Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+    \par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+    \noindent\hangindent=2em\hangafter=0
+    \parbox{6em}{\textit{#1}}
+    \hspace{1.5em} #2 \par}
+
+\newcommand{\EducationEntry}[4]{
+    \noindent \textbf{#1} \hfill
+    \colorbox{Black}{\parbox{6em}{\hfill\color{White}#2}} \par
+    \noindent \textit{#3} \par
+    \noindent\hangindent=2em\hangafter=0 \small #4
+    \normalsize \par}
+
+\newcommand{\WorkEntry}[4]{
+    \noindent \textbf{#1} \hfill
+    \colorbox{Black}{\color{White}#2} \par
+    \noindent \textit{#3} \par
+    \noindent\hangindent=2em\hangafter=0 \small #4
+    \normalsize \par}
+
+\newcommand{\SkillsEntry}[2]{
+    \noindent\hangindent=2em\hangafter=0
+    \parbox{6em}{\textit{#1}}
+    \hspace{1.5em} #2 \par}
+
+\addto\captionsenglish{\renewcommand{\refname}{PUBLICATIONS}}
+
+\begin{document}
+    \MyName{Danylo Petrakivskyi}
+
+    \sepspace
+
+    \NewPart{Personal details}{}
+
+    \PersonalEntry{Birth}{March 31, 2001}
+    \PersonalEntry{Address}{Kharkivs'ke Hwy, 201/203, Kyiv}
+    \PersonalEntry{Phone}{+380985213187}
+    \PersonalEntry{Email}{\url{d.petrakivskyi@smartweb.com.ua}}
+    \PersonalEntry{Social Media}{\href{https://www.linkedin.com/in/danylo-petrakivskyi-916665174/}{LinkedIn},
+        \href{https://github.com/xXxRisingTidexXx/}{GitHub}}
+
+    \begin{thebibliography}{9}
+        \bibitem{petrakivskyi-2020-ranking}
+        Petrakivskyi Danylo and Shevchenko Viktor (2020) \emph{Housing ranking and search software}, MSTIoE 2020--6,
+        p.~40-41.
+
+        \bibitem{petrakivskyi-2019-house}
+        Petrakivskyi Danylo and Shevchenko Viktor (2019) \emph{Real estate clustering, based on the price and placement
+        features}, MSTIoE 2019--5, p.17.
+    \end{thebibliography}
+
+    \NewPart{Education}{}
+
+    \EducationEntry{MSc, Computer Science}{2022--2024}{Kyiv Academic University}{Here I deepened my mathematical and
+    data analysis skills due to specific electives like Advanced Linear Algbera or Advanced Statistics. The topic of
+    my thesis was ``Automated e-Catalog Content Moderation System``.}
+    \sepspace
+
+    \EducationEntry{BSc, Software Engineering}{2018--2022}{Taras Shevchenko National University of Kyiv}{I earned my
+    degree from the Faculty of Information Technologies. Here I acquired a set of programming skills and mathematical
+    techniques, including OOP, design patterns, SQL, computer networking, calculus, probability, approximation,
+        optimization, etc. The topic of my thesis was ``Big data analysis software for keyword generation``.}
+
+    \NewPart{Work experience}{}
+
+    \WorkEntry{Middle Data Scientist}{Jan 2022 -- present}{EVO, Full-time}{In the current role I introduced an Advanced
+    Python Crash Course to colleagues. Moreover, I took part in the hiring process as an interviewer and test task
+    checker. Also I developed a $ru \rightarrow uk$ NMT application using transformers. At this time I construct a
+    content moderation system based on an imbalanced hierarchical classifier for thousands of categories. It employs
+    CNNs and transformers to build product vectors for further classification.}
+
+    \WorkEntry{Junior Data Scientist}{May 2021 -- Dec 2021}{EVO, Full-time}{In this role I researched, deployed and
+    optimized an automatic keyword generation service using rule-based approaches, WordNet, lemmatization and large
+    graphs. Also I leaded an ML meetup on applied DS, parallel computing and MLOps.}
+    \pagebreak
+
+    \WorkEntry{Junior Python Developer}{Sep 2019 -- May 2021}{EVO, Full-time}{My key duties at this position were an
+    anti-DDOS web application maintaining, suspicious traffic monitoring with Kibana \& Grafana, an Nginx realtime log
+    parser development \& deployment, an S3 storage synchronization service implementation.}
+    \sepspace
+
+    \WorkEntry{Trainee}{Jul 2019 -- Aug 2019}{EVO, Internship}{For training purposes I developed an i18n web service
+    using aiohttp \& react.js.}
+    \sepspace
+
+    \NewPart{Skills}{}
+
+    \SkillsEntry{Programming}{Python, Golang, JavaScript}
+    \SkillsEntry{Languages}{}
+    \SkillsEntry{Frameworks}{Tensorflow, PyTorch, SQLAlchemy, Spark, scikit-learn}
+    \SkillsEntry{VCS}{git, GitHub, GitLab}
+    \SkillsEntry{Storages}{PostgreSQL, Clickhouse, S3, MongoDB, HDFS, Elasticsearch}
+    \SkillsEntry{Monitoring}{Prometheus, Kibana, Grafana}
+    \SkillsEntry{Containers}{Docker}
+    \SkillsEntry{IDEs}{PyCharm, Jupyter Notebook, GoLand}
+    \SkillsEntry{Languages}{Ukrainian (C2), English (B2)}
+
+    \NewPart{References}{}
+
+    \PersonalEntry{Name}{Ihor Fesianov}
+    \PersonalEntry{Job Title}{Team Lead of Data Science}
+    \PersonalEntry{Company}{EVO}
+    \PersonalEntry{Work Address}{Kharkivs'ke Hwy, 201/203, Kyiv}
+    \PersonalEntry{Phone}{+380632094937}
+    \PersonalEntry{Email}{\url{i.fesianov@smartweb.com.ua}}
+    \sepspace
+
+    \PersonalEntry{Name}{Viktor Shevchenko}
+    \PersonalEntry{Job Title}{Deputy Director for Scientific Work}
+    \PersonalEntry{Company}{The Institute of Software Systems of the National Academy of}
+    \PersonalEntry{}{Sciences of Ukraine}
+    \PersonalEntry{Work Address}{Akademika Glushkova Avenue, 40, building 5, Kyiv}
+    \PersonalEntry{Phone}{+380963809807}
+    \PersonalEntry{Email}{\url{gii2014@nas.gov.ua}}
+    \sepspace
+
+    \PersonalEntry{Name}{Iryna Yurchuk}
+    \PersonalEntry{Job Title}{Associate Professor}
+    \PersonalEntry{Company}{The Faculty of Information Technology of Taras Shevchenko}
+    \PersonalEntry{}{National University of Kyiv}
+    \PersonalEntry{Work Address}{Bohdana Havrylyshyna St, 24, Kyiv}
+    \PersonalEntry{Phone}{+380979858169}
+    \PersonalEntry{Email}{\url{irynayurchuk@knu.ua}}
+\end{document}

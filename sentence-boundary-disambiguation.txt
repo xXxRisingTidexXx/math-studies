@@ -1,0 +1,59 @@
+# Зауваження
+# 3. Додай плашку "Це переклад з англійської мови" в обговоренні після публікації.
+
+
+'''Розрізнення меж речення''', також відоме, як '''розбиття речення''', '''виявлення меж речення''' і '''сегментація речення''' {{snd}} задача в галузі [[Обробка природної мови|обробки природної мови]], яка визначає місце початку й закінчення [[Речення|речення]]. Інструменти обробки тексту часто вимагають, щоб вхідні дані були розділені на самостійні фрагменти; однак ідентифікація їхніх меж може бути складною через потенційну неоднозначність [[Пунктуація|розділових знаків]]. На письмі [[Крапка|крапка]] може позначати як кінець твердження, так і [[Абревіатура|абревіатуру]], [[Десятковий розділювач|десятковий роздільник]], [[Три крапки|трикрапку]] чи адресу електронної пошти. Близько 47% крапок у [[Корпус текстів|корпусі]] ''[[The Wall Street Journal]]'' позначають акроніми. <ref>{{cite web|url=http://www.ling.gu.se/~lager/Mutbl/Papers/sent_bound.ps|title=1 Automatic Extraction of Rules for Sentence Boundary Disambiguation |author1=E. Stamatatos |author2=N. Fakotakis |author3=G. Kokkinakis |publisher=University of Patras|accessdate=2009-01-03}}</ref>
+[[Знак питання|Знаки питання]] та [[Знак оклику|оклику]] так само можуть бути невизначеними через використання в [[Смайл|смайликах]], [[Комп'ютерна програма|комп'ютерному коді]] й [[Сленг|сленгу]].
+
+Деякі мови, зокрема японська та китайська, мають чіткі маркери кінців речень.
+
+==Стратегії==
+Стандартний '[[Vanilla software|vanilla]]'-підхід для знаходження кінця речення:{{clarify|date=February 2015}}
+
+:(a) Якщо це крапка, вона закінчує твердження.
+:(b) Якщо попередній токен зі складеного вручну [[Списки скорочень|списку скорочень]], то це не завершує речення.
+:(c) Якщо наступний токен починається з великої літери {{snd}} це кінець тези.
+
+Ця стратегія правильно знаходить близько 95% речень.<ref>{{cite web|url=http://www.attivio.com/attivio/blog/263-doing-things-with-words-part-two-sentence-boundary-detection.html|title= Doing Things with Words, Part Two: Sentence Boundary Detection|first=John |last=O'Neil |accessdate=2009-01-03}}</ref> Такі речі, як скорочені імена, напр. «[[Девід Герберт Лоуренс|Д. Г. Лоуренс]]» (з [[Пробіл|пробілами]] між окремими словами, які утворюють повне ім’я), ідіосинкратичний орфоепічний правопис, що використовується для стилістичних цілей (часто стосується однієї концепції, наприклад, заголовок розважального твору "{{нп|.hack//SIGN|.hack//SIGN||.hack//SIGN}}") і використання нестандартної пунктуації у тексті часто підпадають під решту 5%.
+
+Інший підхід полягає в тому, щоб автоматично вивчати правила з набору документів, де кінці речень попередньо розмічені. Такі рішення базуються на {{нп|Принцип максимальної ентропії|моделі максимальної ентропії||Principle of maximum entropy}}.<ref>{{cite web|url=http://www.aclweb.org/anthology/A/A97/A97-1004.pdf|title=A Maximum Entropy Approach to Identifying Sentence Boundaries |first1=JC |last1=Reynar |first2=A |last2=Ratnaparkhi |accessdate=2009-01-03}}</ref> Наприклад, архітектура [https://web.archive.org/web/20070922132340/http://elib.cs.berkeley.edu/src/satz/ SATZ] використовує нейронну мережу для усунення неоднозначності меж речень і досягає 98,5% точності.
+
+==Програмне забезпечення==
+;Приклади застосування Perl-сумісних [[Регулярний вираз|регулярних виразів]] ("[[PCRE]]")
+:* <syntaxhighlight lang="ragel" inline>((?<=[a-z0-9][.?!])|(?<=[a-z0-9][.?!]\"))(\s|\r\n)(?=\"?[A-Z])</syntaxhighlight>
+:* <syntaxhighlight lang="php" inline>$sentences = preg_split("/(?<!\..)([\?\!\.]+)\s(?!.\.)/", $text, -1, PREG_SPLIT_DELIM_CAPTURE);</syntaxhighlight> (для [[PHP]])
+
+;Онлайн-сервіси, бібліотеки та API
+:* [http://text0.mib.man.ac.uk:8080/scottpiao/sent_detector sent_detector]{{snd}}Java
+:* [http://search.cpan.org/~shlomoy/Lingua-EN-Sentence-0.25/ Lingua-EN-Sentence]{{snd}}perl
+:* [http://search.cpan.org/~tgrose/HTML-Summary-0.017/lib/Text/Sentence.pm Sentence.pm]{{snd}}perl
+:* [http://elib.cs.berkeley.edu/src/satz/ SATZ]{{snd}}An Adaptive Sentence Segmentation System{{snd}}by David D. Palmer{{snd}}C
+
+;Набори інструментів, які включають виявлення речень
+:* [[OpenNLP|Apache OpenNLP]]{{snd}}[http://opennlp.apache.org]
+:* [[Freeling (software)]]{{snd}}[http://garraf.epsevg.upc.es/freeling/]
+:* [[Natural Language Toolkit]]{{snd}}[http://nltk.org/]
+:* [[Stanford NLP]]{{snd}}[http://nlp.stanford.edu/software/index.shtml]
+:* [[GExp]]{{snd}}[http://code.google.com/p/graph-expression/wiki/SentenceSplitting]
+:* [https://github.com/CogComp/cogcomp-nlp CogComp-NLP]
+
+==Див. також==
+* {{нп|Розстановка речень|Розстановка речень||Sentence spacing}}
+* {{нп|Роздільник слів|Роздільник слів||Word divider}}
+* [[Правила переносу слів на письмі]]
+* [[Пунктуація]]
+* {{нп|Сегментація тексту|Сегментація тексту||Text segmentation}}
+* [[Сегментація (мовознавство)]]
+* {{нп|Витяг речення|Витяг речення||Sentence extraction}}
+* [[Пам'ять перекладів]]
+* {{нп|Багатослівний вираз|Багатослівний вираз||Multiword expression}}
+
+==Примітки==
+{{reflist}}
+
+==Зовнішні посилання==
+* [https://spacy.io/universe/project/python-sentence-boundary-disambiguation pySBD {{snd}} python Sentence Boundary Disambiguation]
+
+{{Обробка природної мови}}
+
+[[Category:Обробка природної мови]]
