@@ -46,16 +46,19 @@
     \textbf{Діаграми tikzcd}
 
     \[
-        \begin{tikzcd}[column sep=huge]
-            \ & A &\ \\
-            B_1\urar{j_1}\rar{\iota^{1}} & B_1\boxtimes B_2\uar[swap]{h}
-            & B_2\ular[swap]{j_2}\lar[swap]{\iota^{2}}
+        \begin{tikzcd}[column sep=small,row sep=small]
+            & \{\pm 1\} \arrow[hook,bend right,swap]{ldd}{a ^ n} \arrow[hook',bend left]{rdd}{a ^ n} \\
+            & & & \\
+            C_{2 n} \arrow[hook]{rr} \arrow[two heads]{dd} & & Dic_n \arrow[two heads]{dd} \arrow[bend left,two heads]{rd} \\
+            & & & \{\pm 1\} \\
+            C_n \arrow[hook]{rr} & & Dih_n \arrow[bend right,two heads]{ru}
         \end{tikzcd}
     \]
     \[
         \begin{tikzcd}
-            A \drar[swap]{f} \rar & B \dar{\varphi} \\
-            & C
+            & & Arr \otimes Arr \arrow{ld} \arrow{rd} \\
+            & Arr \arrow{ld}{dom} \arrow{rd}{cod} & & Arr \arrow{ld}{dom} \arrow{rd}{cod} \\
+            Ob & & Ob & & Ob
         \end{tikzcd}
     \]
 
