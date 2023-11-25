@@ -17,7 +17,8 @@
 \usepackage[ukrainian]{babel}
 \usepackage{cmap}
 \usepackage{indentfirst}
-\usepackage[all]{xy}
+\usepackage[all,color]{xy}
+
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{patterns}
@@ -30,7 +31,7 @@
 \tikzset{snake it/.style={decorate, decoration=snake}}
 
 \begin{document}
-    \textbf{Діаграми xy-pic}
+    \textbf{Комутативні діаграми xy-pic}
     \begin{gather*}
         \xymatrix{
             A \ar[r]^{f} \ar[d]^{l} & B \ar[r]^{g} \ar[d]^{m} & C \ar[r]^{h} \ar[d]^{n} & D \ar[r]^{j} \ar[d]^{p} & E \ar[d]^{q} \\
@@ -43,7 +44,7 @@
         }\\
     \end{gather*}
 
-    \textbf{Діаграми tikzcd}
+    \textbf{Комутативні діаграми tikzcd}
 
     \[
         \begin{tikzcd}[column sep=small,row sep=small]
@@ -62,30 +63,25 @@
         \end{tikzcd}
     \]
 
-    \textbf{Графи xymatrix}
+    \newpage
+
+    \textbf{Графи xy-pic}
 
     \begin{center}
         $
         \xymatrix{
-            &*=0{\bullet}&&\\
-            *=0{\bullet}
-            \ar[d]
-            \ar[ur]
-            \ar@/^/[dr]
-            \ar@/^/[drr]
-            &&&*=0{\bullet}\ar@/^/[d]\ar@/_/[ull]
-            \\
-            *=0{\bullet}
-            &*=0{\bullet}\ar[r]
-            &*=0{\bullet}\ar@/^/[r]
-            &*=0{\bullet}\ar@/^/[l]
+            *=0{\bullet} \ar@{-}[r] \ar@{-}[d] & *=0{\bullet} \ar@{-}[d] \ar@{-}@/^{1pc}/[rrdd] \\
+            *=0{\bullet} \ar@{-}[r] \ar@{-}@/_{1pc}/[rrdd] & *=0{\bullet} \ar@{-}[r] \ar@{-}[d] & *=0{\bullet} \ar@{-}[d] \\
+            & *=0{\bullet} \ar@{-}[r] & *=0{\bullet} \ar@{-}[r] \ar@{-}[d] & *=0{\bullet} \ar@{-}[d] \\
+            & & *=0{\bullet} \ar@{-}[r] & *=0{\bullet}
         }
         $
         \hspace{1cm}
         $
         \xymatrix{
-            \xy*{1}*\cir<8pt>{}\endxy\ar@{-}[r]                      & \xy*{2}*\cir<8pt>{}\endxy\ar@{--}[d]  \\
-            \xy*{3}*\cir<8pt>{}\endxy\ar@{-}[ur]\ar@{-}[r]\ar@{--}[u] & \xy*{4}*\cir<8pt>{}\endxy\ar@{-}[lu]
+            *++[o][F]{1} \ar@{-}[r] \ar@{-}[dr] \ar@{-}[ddr] \ar@{--}[d] & *++[o][F]{2} \ar@{--}[d] \ar@{-}[ld] \ar@{-}[ldd] \\
+            *++[o][F]{3} \ar@{-}[r] \ar@{-}[dr] \ar@{--}[d] & *++[o][F]{4} \ar@{--}[d] \ar@{-}[ld] \\
+            *++[o][F]{5} \ar@{-}[r] & *++[o][F]{6}
         }
         $
     \end{center}
