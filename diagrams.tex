@@ -19,7 +19,6 @@
 \usepackage{indentfirst}
 \usepackage[all,color]{xy}
 
-
 \usetikzlibrary{arrows}
 \usetikzlibrary{patterns}
 \usetikzlibrary{decorations.pathmorphing}
@@ -28,6 +27,7 @@
 \usetikzlibrary{fit}
 \usetikzlibrary{petri}
 \usetikzlibrary{shapes.geometric}
+\usetikzlibrary{graphs}
 \tikzset{snake it/.style={decorate, decoration=snake}}
 
 \begin{document}
@@ -86,50 +86,32 @@
         $
     \end{center}
 
-    \newpage
-
     \textbf{Графи tikz}
 
     \begin{center}
-        \begin{tikzpicture}[auto ,node distance = 1 cm,on grid ,smooth, samples=300,
-            semithick , state/.style ={circle, top color =black , bottom color = black ,
-            draw, minimum width=1mm}, inner sep=2.5pt](100,180)
-
-            \qbezier(100,0)(120,50)(220,20)
-            \qbezier(150,-50)(150,0)(220,20)
-
-            \put(150,0){$ C $}
-            \node[ellipse, draw = black, minimum width =5cm, minimum height = 2.2cm] (t) at (1,0) {};
-            \node[ellipse, draw = black, minimum width =4.5cm, minimum height = 3cm] (h) at (4,-3) {};
-
-            \node[state, label=above left:$a$] (a) {};
-            \node[state, label= right:$u$] (u) [right = 35mm of a] {};
-            \node[state, label= right:$v$] (v) [below right = 25mm of u] {};
-            \node[state, label=above left:$b$] (b) [below left = 25mm of v] {};
-            \node[state, label= right:$x$] (x) [above right = 35mm of v] {};
-
-            \path [draw=black,red,thick,snake it] (a) -- (u);
-            \path [draw=black,snake it,thin] (b) -- (v);
-            \path [draw=black,-{Stealth}] (u) -- (v);
-        \end{tikzpicture}
+        \tikz \graph[grow down,branch right=3.5cm]{
+            0/Товари -> {
+                5/електрообладнання,
+                15/Дім і сад -> {
+                    1503/меблі,
+                    1525/рукоділля
+                },
+                13/будівництво -> {
+                    1422/цемент
+                }
+            }
+        };
     \end{center}
 
     \begin{figure}[h!]
         \centering
-        \begin{tikzpicture}[scale=0.5,smooth]
-            \draw[very thin,color=gray,step=.5cm] (-12,-5.0) grid (12,1);
-            \draw[->] (-12,0) -- (12,0) node[right] {$x$};
-            \draw[->] (0,-5) -- (0,1) node[above] {$f(x)$};
-            \draw[very thick, smooth,domain=8.0:12,samples=300] plot(\x,{(\x-8)^(1/3)-(\x+8)^(1/3)});
-            \draw[very thick, smooth,domain=-8:8.0,samples=300] plot(\x,{-(8-\x)^(1/3)-(\x+8)^(1/3)});
-            \draw[very thick, smooth,domain=-12:-8.0,samples=300] plot(\x,{-(8-\x)^(1/3)+(-\x-8)^(1/3)});
-            \node at (0.5,-4.5) {$C$};
-            \node at (-8.7,-2.654444) {$A$};
-            \node at (8.71,-2.654444) {$B$};
-            \filldraw [green] (8,{-2*(2)^(1/3)}) circle (0.15cm);
-            \filldraw [green] (-8,{-2*(2)^(1/3)}) circle (0.15cm);
-            \filldraw [red] (0,-4) circle (0.15cm);
+        \begin{tikzpicture}[domain=0:4]
+            \draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
+            \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+            \draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+            \draw[color=red] plot (\x,{0.3 * log2(\x + 1)}) node[right] {$f(x) = 0.3 \log_2 (x + 1)$};
+            \draw[color=blue] plot (\x,{sin(\x r)}) node[right] {$f(x) = \sin x$};
+            \draw[color=orange] plot (\x,{0.05 * exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e ^ x$};
         \end{tikzpicture}
-        \caption{Графік функції $f(x)=\sqrt[3]{x-8}-\sqrt[3]{x+8}$.}
     \end{figure}
 \end{document} 
