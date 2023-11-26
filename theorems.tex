@@ -71,6 +71,9 @@
 \newtotcounter{refnum}
 \AtEveryBibitem{\stepcounter{refnum}}
 
+\newtheorem{theorem}{Теорема}
+\newtheorem{definition}{Означення}
+
 \begin{document}
     \begin{center}
         \Large \textbf{Анотація}
@@ -103,6 +106,11 @@
         $\times$    & поелементне множення тензорів \\
         $\sigma$    & софтмакс
     \end{tabular}
+
+    \newpage
+
+    \listoffigures
+    \addcontentsline{toc}{chapter}{Перелік ілюстрацій}
 
     \newpage
 
@@ -141,6 +149,7 @@
 
     Векторизатором для текстових даних виступив USE~\cite{yang-etal-2020-multilingual}, а для зображень --- \\
     CAFormer, одна з реалізацій MetaFormer~\cite{10304335}.
+    Обмеження векторизатора назв --- не більше 256 токенів~[\ref{def:token}] у реченні.
 
     \noindent
     \begin{figure}[ht]
@@ -214,7 +223,28 @@
 
     \section{Використані технології}\label{sec:section2.2}
 
-    Тут буде опис бібліотек та застосованих апаратних прискорювачів.
+    У цьому розділі будуть перелічені інструменти й програмні бібліотеки, використанні при розробці й апробації
+    системи, а також наведене обґрунтування саме такого вибору.
+    А поки пропонуємо поглянути на теореми.
+
+    \begin{theorem}
+        \label{the:central-limit-theorem}
+        Нехай $X_{k}$ --- послідовність взаємно незалежних випадкових величин з однаковими розподілами, які мають
+        скінченне математичне сподівання $\mu = E(X_{k})$ та скінченну дисперсію $\sigma ^ 2 = D(X_{k})$.
+        Нехай $S_{n} = X_{1} + \dots + X_{n}$.
+        Тоді:
+        \[\sqrt{n} \left(\frac{S_{n}}{n} - \mu\right) \xrightarrow{n} N(0, \sigma ^ 2)\]
+        А для довільних фіксованих $\alpha, \beta \ (\alpha < \beta)$ справедливо:
+        \[P\left\{\alpha < \frac{S_{n} - n \mu}{\sigma n ^ {1 / 2}} < \beta \right\} \to \Phi(\beta) - \Phi(\alpha)\]
+        Де $\Phi(x)$ --- нормальна функція розподілу.
+    \end{theorem}
+
+    \begin{definition}
+        \label{def:token}
+        Токен --- об'єкт, що утворюється із лексеми в процесі лексичного аналізу.
+        У прикладному програмуванні поняття токену та його лексема можуть не розрізнятися.
+        Шаблон токена --- формальний опис класу лексем, які можуть утворити даний тип токена.
+    \end{definition}
 
     \newpage
 
