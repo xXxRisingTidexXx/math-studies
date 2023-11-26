@@ -1,0 +1,60 @@
+\documentclass[mathserif]{beamer}
+
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ukrainian]{babel}
+\usepackage{afterpage}
+\usepackage{placeins}
+\usepackage{cmap}
+\usepackage[labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{mathtools}
+
+\setbeamertemplate{navigation symbols}{}
+\usetheme{Darmstadt}
+\usecolortheme{crane}
+
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,anchorcolor=blue}
+
+\title{Стохастичний градієнтний спуск}
+\institute{Державна наукова установа \\ ``Київський академічний університет``}
+\author[Д.О.~Петраківський]{\textbf{Данило Олександрович Петраківський} \\ {\textsl{d.petrakivskyi@kau.edu.ua}}}
+\date{\today}
+\logo{\includegraphics[height=10mm]{images/kau}\hspace{7pt}}
+
+\begin{document}
+    \frame{\titlepage}
+
+    \begin{frame}{Стохастичний градієнтний спуск}
+        \href{https://en.wikipedia.org/wiki/Stochastic_gradient_descent}{Стохастичний градієнтний спуск} ---
+        ітеративний метод оптимізації градієнтного спуску за допомогою стохастичного наближення.
+        Використовується для прискорення пошуку цільової функції шляхом використання обмеженого за розміром
+        тренувального набору, який вибирається випадково при кожній ітерації.
+    \end{frame}
+
+    \begin{frame}{Приклад}
+        Знайдемо алгоритм $a(x, w)$, що апроксимує залежність $y ^ *$.
+        У випадку лінійного класифікатора шуканий алгоритм має вигляд:
+
+        \[a(x, w) = \varphi \left(\sum_{j=1} ^ n w_j x ^ j - w_0 \right)\]
+    \end{frame}
+
+    \begin{frame}{Тіло методу}
+        \begin{enumerate}
+            \item Ініціалізувати ваги $w_j$, ($j = 0, \dots, k$), де $k$ --- розмірність простору ознак.
+            \item Ініціалізувати поточну оцінку функціонала:
+                \[Q \coloneqq \sum_{i=1} ^ n L(a(x_i, w), y_i)\]
+            \item Поки значення $Q$ не стабілізується та/або ваги $w$ не припинять змінюватись.
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}
+        \begin{center}
+            \Huge \bfseries \itshape Дякую за увагу!
+        \end{center}
+    \end{frame}
+\end{document}
