@@ -48,12 +48,6 @@
 
 \setstretch{1.20}
 
-\numberwithin{equation}{chapter}
-\numberwithin{figure}{chapter}
-\numberwithin{table}{chapter}
-\numberwithin{footnote}{chapter}
-\numberwithin{figure}{section}
-
 \pagestyle{fancyplain}
 \fancyhf{}
 \fancyhead[R]{\thepage}
@@ -71,26 +65,36 @@
 \newtotcounter{refnum}
 \AtEveryBibitem{\stepcounter{refnum}}
 
+\theoremstyle{plain}
 \newtheorem{theorem}{Теорема}
+\theoremstyle{definition}
 \newtheorem{definition}{Означення}
+
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+\numberwithin{footnote}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{theorem}{chapter}
+\numberwithin{definition}{chapter}
 
 \begin{document}
     \begin{center}
         \Large \textbf{Анотація}
     \end{center}
     \noindent
-    \textbf{Петраківський Д.О.}, \textbf{<<Автоматизована система модерації електронного каталогу>>}, Кваліфікаційна
+    \textbf{Петраківський Д.~О.} \textbf{<<Автоматизована система модерації електронного каталогу>>}, Кваліфікаційна
     робота на здобуття освітнього ступеня <<магістр>> за спеціальністю 122 Комп'ютерні науки, Київський академічний
     університет, Київ, 2024, сторінки --- \ztotpages, джерела --- \total{refnum}.
 
     \bigskip
     \noindent
-    \textbf{ACM:} I.2.7, I.2.10
+    \textbf{ACM:} I.2.7, I.2.10.
 
     \bigskip
     \noindent
     \textbf{Ключові слова:} модерація вмісту, ієрархічна класифікація, широкомасштабна класифікація, дизбалансна
-    класифікація
+    класифікація.
 
     \newpage
     \tableofcontents
@@ -149,12 +153,12 @@
 
     Векторизатором для текстових даних виступив USE~\cite{yang-etal-2020-multilingual}, а для зображень --- \\
     CAFormer, одна з реалізацій MetaFormer~\cite{10304335}.
-    Обмеження векторизатора назв --- не більше 256 токенів~[\ref{def:token}] у реченні.
+    Обмеження векторизатора назв --- не більше 256 токенів~[\ref{def:definition2.1}] у реченні.
 
     \noindent
     \begin{figure}[ht]
         \includegraphics[width=\textwidth]{images/catify-concatenated-model}
-        \caption{Схема роботи класифікатора}
+        \caption{Схема роботи класифікатора.}
     \end{figure}
 
     \newpage
@@ -168,7 +172,7 @@
     \noindent
     \begin{figure}[ht]
         \includegraphics[width=\textwidth]{images/catify-product}
-        \caption{Картка товару}
+        \caption{Картка товару.}
     \end{figure}
 
     \newpage
@@ -182,13 +186,13 @@
     \noindent
     \begin{figure}[ht]
         \includegraphics[width=\textwidth]{images/catify-hierarchies}
-        \caption{Приклади категорійних ієрархій}
+        \caption{Приклади категорійних ієрархій.}
     \end{figure}
 
     \noindent
     \begin{figure}[ht]
         \includegraphics[width=\textwidth]{images/catify-category-tree}
-        \caption{Фрагмент дерева категорій}
+        \caption{Фрагмент дерева категорій.}
     \end{figure}
 
     \newpage
@@ -201,13 +205,13 @@
     \noindent
     \begin{figure}[ht]
         \includegraphics[width=\textwidth]{images/catify-linear-model}
-        \caption{Лінійна модель}
+        \caption{Лінійна модель.}
     \end{figure}
 
     \noindent
     \begin{figure}[ht]
         \includegraphics[width=\textwidth]{images/catify-cascading-model}
-        \caption{Каскадна модель}
+        \caption{Каскадна модель.}
     \end{figure}
 
     \newpage
@@ -228,21 +232,21 @@
     А поки пропонуємо поглянути на теореми.
 
     \begin{theorem}
-        \label{the:central-limit-theorem}
+        \label{the:theorem2.1}
         Нехай $X_{k}$ --- послідовність взаємно незалежних випадкових величин з однаковими розподілами, які мають
         скінченне математичне сподівання $\mu = E(X_{k})$ та скінченну дисперсію $\sigma ^ 2 = D(X_{k})$.
         Нехай $S_{n} = X_{1} + \dots + X_{n}$.
-        Тоді:
-        \[\sqrt{n} \left(\frac{S_{n}}{n} - \mu\right) \xrightarrow{n} N(0, \sigma ^ 2)\]
-        А для довільних фіксованих $\alpha, \beta \ (\alpha < \beta)$ справедливо:
-        \[P\left\{\alpha < \frac{S_{n} - n \mu}{\sigma n ^ {1 / 2}} < \beta \right\} \to \Phi(\beta) - \Phi(\alpha)\]
-        Де $\Phi(x)$ --- нормальна функція розподілу.
+        Тоді
+        \[\sqrt{n} \biggl(\frac{S_{n}}{n} - \mu \biggr) \xrightarrow{n} N \bigl(0, \sigma ^ 2 \bigr),\]
+        а для довільних фіксованих $\alpha, \beta \ (\alpha < \beta)$ справедливо
+        \[P\left\{\alpha < \frac{S_{n} - n \mu}{\sigma n ^ {1 / 2}} < \beta \right\} \to \Phi(\beta) - \Phi(\alpha),\]
+        де $\Phi(x)$ --- нормальна функція розподілу.
     \end{theorem}
 
     \begin{definition}
-        \label{def:token}
+        \label{def:definition2.1}
         Токен --- об'єкт, що утворюється із лексеми в процесі лексичного аналізу.
-        У прикладному програмуванні поняття токену та його лексема можуть не розрізнятися.
+        У прикладному програмуванні поняття токена та його лексема можуть не розрізнятися.
         Шаблон токена --- формальний опис класу лексем, які можуть утворити даний тип токена.
     \end{definition}
 

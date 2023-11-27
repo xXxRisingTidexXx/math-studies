@@ -50,16 +50,20 @@
         \begin{tikzcd}[column sep=small,row sep=small]
             & \{\pm 1\} \arrow[hook,bend right,swap]{ldd}{a ^ n} \arrow[hook',bend left]{rdd}{a ^ n} \\
             & & & \\
-            C_{2 n} \arrow[hook]{rr} \arrow[two heads]{dd} & & Dic_n \arrow[two heads]{dd} \arrow[bend left,two heads]{rd} \\
+            C_{2 n} \arrow[hook]{rr} \arrow[two heads]{dd}
+            &
+            & \operatorname{Dic_n} \arrow[two heads]{dd} \arrow[bend left,two heads]{rd} \\
             & & & \{\pm 1\} \\
-            C_n \arrow[hook]{rr} & & Dih_n \arrow[bend right,two heads]{ru}
+            C_n \arrow[hook]{rr} & & \operatorname{Dih_n} \arrow[bend right,two heads]{ru}
         \end{tikzcd}
     \]
     \[
         \begin{tikzcd}
-            & & Arr \otimes Arr \arrow{ld} \arrow{rd} \\
-            & Arr \arrow{ld}{dom} \arrow{rd}{cod} & & Arr \arrow{ld}{dom} \arrow{rd}{cod} \\
-            Ob & & Ob & & Ob
+            & & \operatorname{Arr} \otimes \operatorname{Arr} \arrow{ld} \arrow{rd} \\
+            & \operatorname{Arr} \arrow{ld}{\operatorname{dom}} \arrow{rd}{\operatorname{cod}}
+            &
+            & \operatorname{Arr} \arrow{ld}{\operatorname{dom}} \arrow{rd}{\operatorname{cod}} \\
+            \operatorname{Ob} & & \operatorname{Ob} & & \operatorname{Ob}
         \end{tikzcd}
     \]
 
@@ -109,7 +113,7 @@
             \draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
             \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
             \draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
-            \draw[color=red] plot (\x,{0.3 * log2(\x + 1)}) node[right] {$f(x) = 0.3 \log_2 (x + 1)$};
+            \draw[color=red] plot (\x,{0.3 * log2(\x + 1)}) node[right] {$f(x) = 0{,}3 \log_2 (x + 1)$};
             \draw[color=blue] plot (\x,{sin(\x r)}) node[right] {$f(x) = \sin x$};
             \draw[color=orange] plot (\x,{0.05 * exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e ^ x$};
         \end{tikzpicture}
